@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Shoul_Portfolio </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="portfolio.css" rel="stylesheet" type="text/css"/>
+    </head>    
+    <body>
+
+        <!-- MAIN (Center website) -->
+        <div class="main">
+
+            <h1>M.SHOUL - Webdesigner</h1>
+            <hr>
+
+            <h2>PORTFOLIO</h2>
+
+            <div id="myBtnContainer">
+                <button class="btn active" onclick="filterSelection('all')"> Tout</button>
+                <button class="btn" onclick="filterSelection('nature')"> Base</button>
+                <button class="btn" onclick="filterSelection('cars')"> Word</button>
+                <button class="btn" onclick="filterSelection('people')"> Autre</button>
+            </div>
+
+            <!-- Portfolio Gallery Grid -->
+            <div class="row">
+                <div class="column nature">
+                    <div class="content">
+                        <a href="souris.html">
+                        <img src="images/souris.png" alt="souris" style="width:100%">
+                        </a>
+                        <h4>Souris</h4>
+                        <p>Comment manipuler la souris d'ordinateur? </p>
+                    </div>
+                </div>
+                <div class="column nature">
+                    <div class="content">
+                        <a href="clavier.html">
+                        <img src="images/clavier64.png" alt="clavier" style="width:100%">
+                        </a>
+                        <h4>Clavier</h4>
+                        <p>Comment manipuler le clavier d'ordinateur?.</p>
+                    </div>
+                </div>
+                <div class="column nature">
+                    <div class="content">
+                        <a href="windows.html">
+                        <img src="images/windows.jpeg" alt="windows" style="width:100%">
+                        </a>
+                        <h4>Windows</h4>
+                        <p>Comment manipuler les fenêtres de l'ordinateur?</p>
+                    </div>
+                </div> 
+ 
+                <div class="column cars">
+                    <div class="content">
+                        <img src="images/word.png" alt="Car" style="width:100%">
+                        
+                        <h4>Word gratuit</h4>
+                        <p>Comment créer un compte Microsoft avec Gmail?</p>
+                    </div>
+                </div>
+                <div class="column cars">
+                    <div class="content">
+                        <img src="images/wordenligne.png" alt="Car" style="width:100%">
+                        <h4>Word en ligne</h4>
+                        <p>Comment ouvrir un document dans Word en ligne?</p>
+                    </div>  
+                </div>
+                <div class="column cars">
+                    <div class="content">
+                        <img src="images/miseenforme1.png" alt="Car" style="width:100%">
+                        <h4>Word mise en forme</h4>
+                        <p>Comment mettre un texte en forme avec Word?</p>
+                    </div>
+                </div>
+
+                <div class="column people">
+                    <div class="content">
+                        <img src="images/droitauteur.jpeg" alt="Car" style="width:100%">
+                        <h4>Images & droit d'auteur</h4>
+                        <p>Lorem ipsum dolor..</p>
+                    </div>
+                </div>
+                <div class="column people">
+                    <div class="content">
+                        <img src="images/pixabary.jpg" alt="Car" style="width:100%">
+                        <h4>Pixabay</h4>
+                        <p>Lorem ipsum dolor..</p>
+                    </div>
+                </div>
+                <div class="column people">
+                    <div class="content">
+                        <img src="images/aboutme.jpeg" alt="Car" style="width:100%">
+                        <h4>About me</h4>
+                        <p>Lorem ipsum dolor..</p>
+                    </div>
+                </div>
+                <!-- END GRID -->
+            </div>
+
+            <!-- END MAIN -->
+        </div>
+
+        <script>
+            filterSelection("all")
+            function filterSelection(c) {
+                var x, i;
+                x = document.getElementsByClassName("column");
+                if (c == "all")
+                    c = "";
+                for (i = 0; i < x.length; i++) {
+                    w3RemoveClass(x[i], "show");
+                    if (x[i].className.indexOf(c) > -1)
+                        w3AddClass(x[i], "show");
+                }
+            }
+
+            function w3AddClass(element, name) {
+                var i, arr1, arr2;
+                arr1 = element.className.split(" ");
+                arr2 = name.split(" ");
+                for (i = 0; i < arr2.length; i++) {
+                    if (arr1.indexOf(arr2[i]) == -1) {
+                        element.className += " " + arr2[i];
+                    }
+                }
+            }
+
+            function w3RemoveClass(element, name) {
+                var i, arr1, arr2;
+                arr1 = element.className.split(" ");
+                arr2 = name.split(" ");
+                for (i = 0; i < arr2.length; i++) {
+                    while (arr1.indexOf(arr2[i]) > -1) {
+                        arr1.splice(arr1.indexOf(arr2[i]), 1);
+                    }
+                }
+                element.className = arr1.join(" ");
+            }
+
+
+            // Add active class to the current button (highlight it)
+            var btnContainer = document.getElementById("myBtnContainer");
+            var btns = btnContainer.getElementsByClassName("btn");
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].addEventListener("click", function () {
+                    var current = document.getElementsByClassName("active");
+                    current[0].className = current[0].className.replace(" active", "");
+                    this.className += " active";
+                });
+            }
+        </script>
+
+    </body>
+</html>
+
